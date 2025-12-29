@@ -1,0 +1,23 @@
+# Build artifacts
+*.o
+minicpp
+test_exe
+test_result
+minicpp_gen.cpp
+
+# Generated files
+lexer/lexer.cpp
+parser/parser.cpp
+parser/parser.hpp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.log
