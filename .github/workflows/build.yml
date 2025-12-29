@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y bison flex g++
+      run: sudo apt-get update && sudo apt-get install -y bison flex libfl-dev g++
     - name: Build
       run: cd minicpp && make
     - name: Upload artifact
