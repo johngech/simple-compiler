@@ -27,7 +27,12 @@ MiniCPP is a basic compiler that parses and compiles a small subset of C++ into 
    - Linux/macOS: `tar -xzf minicpp-linux.tar.gz` (or macOS equivalent)
    - Windows: Unzip `minicpp-windows.zip`
 
-3. Move the `minicpp` binary (or `minicpp.exe` on Windows) to a directory in your PATH, e.g., `/usr/local/bin/` on Linux/macOS, or add it to your system's PATH.
+3. Move the `minicpp` binary (or `minicpp.exe` on Windows) to a directory in your PATH:
+   - **Linux/macOS**: e.g., `/usr/local/bin/` (may require `sudo`).
+   - **Windows**: Create a folder like `C:\minicpp\` and add it to your PATH:
+     - Search for "Environment Variables" in Windows search.
+     - Edit "Path" in System Variables, add `C:\minicpp\`.
+     - Restart your command prompt.
 
 4. Test it:
    ```bash
