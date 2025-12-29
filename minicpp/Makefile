@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra
+CXXFLAGS = -std=c++17 -Wall -Wextra -I/usr/include -I/usr/local/include
 
 # All files to build
 SRCS = parser/parser.cpp lexer/lexer.cpp ast/ast.cpp evaluators/evaluator.cpp codegen/codegen.cpp main.cpp
