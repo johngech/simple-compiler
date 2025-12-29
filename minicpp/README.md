@@ -6,6 +6,7 @@ A simple compiler for a subset of C++ that generates native executables.
 
 - Parses and compiles basic C++-like programs with variables, arithmetic, assignments.
 - Supports unary minus, post-decrement, and exponentiation (^).
+- Print statements: `print(expr);` to display results.
 - Generates C++ code and compiles it using the system compiler (g++/clang++).
 
 ## Usage
@@ -19,14 +20,22 @@ A simple compiler for a subset of C++ that generates native executables.
 ### Compile to executable
 
 ```bash
-./minicpp -c program.mc -o output_exe
-./output_exe
+./minicpp -c program.mc
+./a.out  # Run the generated executable
+```
+
+Or specify output name:
+
+```bash
+./minicpp -c program.mc -o myprogram
+./myprogram
 ```
 
 ## Language Subset
 
 - Declarations: `int x;`
 - Assignments: `x = expr;`
+- Print: `print(expr);` (displays the value)
 - Expressions: arithmetic (+, -, \*, /, ^), unary minus (-), post-decrement (--)
 - No functions, classes, loops, conditionals yet.
 
