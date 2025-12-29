@@ -1,6 +1,7 @@
 #include "evaluator.h"
 #include <stdexcept>
 #include <cmath>
+#include <iostream>
 
 namespace minicpp {
 
@@ -44,6 +45,11 @@ Value Evaluator::eval(ASTNode* node, SymbolTable* scope) {
             if (node->op == '-') return Value{-v, ""};
             if (node->op == 'd') return Value{v, ""}; // post-decrement, return old value
             return Value{v, ""};
+        }
+        case ASTNodeType::PRINT_STMT: {
+            Value v = eval(node->left, scope);
+            std::cout << v.number << std::endl;
+            return v;
         }
         default: return Value{0.0, ""};
     }

@@ -31,5 +31,6 @@ ASTNode* ast_access_specifier(const std::string& access) {
     n->access = access; return n;
 }
 ASTNode* ast_return(ASTNode* expr) { ASTNode* n = new ASTNode(ASTNodeType::RETURN_STMT); n->left = expr; return n; }
+ASTNode* ast_print(ASTNode* expr) { ASTNode* n = new ASTNode(ASTNodeType::PRINT_STMT); n->left = expr; return n; }
 
 } // namespace minicpp

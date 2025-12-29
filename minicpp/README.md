@@ -11,11 +11,13 @@ A simple compiler for a subset of C++ that generates native executables.
 ## Usage
 
 ### Interpret (run without compiling)
+
 ```bash
 ./minicpp program.mc
 ```
 
 ### Compile to executable
+
 ```bash
 ./minicpp -c program.mc -o output_exe
 ./output_exe
@@ -25,7 +27,7 @@ A simple compiler for a subset of C++ that generates native executables.
 
 - Declarations: `int x;`
 - Assignments: `x = expr;`
-- Expressions: arithmetic (+, -, *, /, ^), unary minus (-), post-decrement (--)
+- Expressions: arithmetic (+, -, \*, /, ^), unary minus (-), post-decrement (--)
 - No functions, classes, loops, conditionals yet.
 
 ## Building
@@ -41,21 +43,25 @@ Requires: bison, flex, g++
 Download the latest release from [GitHub Releases](https://github.com/yourusername/minicpp/releases).
 
 ### Linux
+
 1. Download `minicpp-linux.tar.gz`
 2. Extract: `tar -xzf minicpp-linux.tar.gz`
 3. Move `minicpp` to `/usr/local/bin/` or add to PATH.
 
 Or use the install script:
+
 ```bash
 sudo ./install_ubuntu.sh
 ```
 
 ### Windows
+
 1. Download `minicpp-windows.zip`
 2. Extract and add `minicpp.exe` to your PATH.
 3. Requires MinGW or MSVC for compilation (when using -c).
 
 ### macOS
+
 1. Download `minicpp-macos.tar.gz`
 2. Extract: `tar -xzf minicpp-macos.tar.gz`
 3. Move `minicpp` to `/usr/local/bin/` or add to PATH.

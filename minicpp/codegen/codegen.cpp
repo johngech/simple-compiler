@@ -64,6 +64,10 @@ bool generate_cpp(ASTNode* root, const string& out_cpp_path) {
                 string r = expr_to_cpp(c->left);
                 ofs << "    return (int) (" << r << ");\n";
             } break;
+            case ASTNodeType::PRINT_STMT: {
+                string e = expr_to_cpp(c->left);
+                ofs << "    cout << " << e << " << endl;\n";
+            } break;
             default:
                 break;
         }

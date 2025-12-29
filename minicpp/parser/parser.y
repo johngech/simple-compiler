@@ -32,9 +32,9 @@ void yyerror(const char* s);
 %token T_BITWISE_AND T_BITWISE_OR T_BITWISE_XOR T_BITWISE_NOT T_SHIFT_LEFT T_SHIFT_RIGHT
 %token T_INCREMENT T_DECREMENT T_ARROW
 %token T_LPAREN T_RPAREN T_LBRACE T_RBRACE T_LBRACKET T_RBRACKET T_SEMI T_COMMA T_DOT T_COLON T_TERNARY_QUESTION
-%token T_PREPROCESSOR T_ERROR
+%token T_PREPROCESSOR T_ERROR T_PRINT
 
-%type <node> program stmt stmt_list expr declaration assignment class_def struct_def access_specifier return_stmt
+%type <node> program stmt stmt_list expr declaration assignment class_def struct_def access_specifier return_stmt print_stmt
 
 %left T_PLUS T_MINUS
 %left T_MUL T_DIV
@@ -53,7 +53,7 @@ stmt_list:
     ;
 
 stmt:
-    declaration | assignment | class_def | struct_def | return_stmt | access_specifier
+    declaration | assignment | class_def | struct_def | return_stmt | access_specifier | print_stmt
     ;
 
 declaration:
@@ -95,6 +95,10 @@ access_specifier:
 
 return_stmt:
     T_RETURN expr T_SEMI { $$ = minicpp::ast_return($2); }
+    ;
+
+print_stmt:
+    T_PRINT T_LPAREN expr T_RPAREN T_SEMI { $$ = minicpp::ast_print($3); }
     ;
 
 %%

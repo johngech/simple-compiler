@@ -82,6 +82,7 @@ DIGIT   [0-9]+(\.[0-9]+)?
 "true"              { return T_TRUE; }
 "false"             { return T_FALSE; }
 "nullptr"           { return T_NULLPTR; }
+"print"             { return T_PRINT; }
 
 
 {ID}    { yylval.string = strdup(yytext); return T_IDENTIFIER; }

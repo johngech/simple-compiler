@@ -9,7 +9,7 @@ namespace minicpp {
 enum class ASTNodeType {
     PROGRAM, DECLARATION, ASSIGNMENT, BINARY_EXPR, UNARY_EXPR,
     IDENTIFIER, NUMBER, CLASS, STRUCT,
-    ACCESS_SPECIFIER, RETURN_STMT
+    ACCESS_SPECIFIER, RETURN_STMT, PRINT_STMT
 };
 
 struct ASTNode {
@@ -35,6 +35,7 @@ ASTNode* ast_class(const std::string& name);
 ASTNode* ast_struct(const std::string& name);
 ASTNode* ast_access_specifier(const std::string& access);
 ASTNode* ast_return(ASTNode* expr);
+ASTNode* ast_print(ASTNode* expr);
 
 extern ASTNode* root; // Declaration of the global root
 }
