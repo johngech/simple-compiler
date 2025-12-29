@@ -10,13 +10,13 @@ jobs:
   build-linux:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Install dependencies
       run: sudo apt-get update && sudo apt-get install -y bison flex g++
     - name: Build
       run: cd minicpp && make
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: minicpp-linux
         path: minicpp/minicpp
@@ -24,7 +24,7 @@ jobs:
   build-windows:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Install dependencies
       run: |
         choco install winflexbison3
@@ -35,7 +35,7 @@ jobs:
         make
       shell: msys2 {0}
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: minicpp-windows
         path: minicpp/minicpp.exe
@@ -43,13 +43,13 @@ jobs:
   build-macos:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Install dependencies
       run: brew install bison flex
     - name: Build
       run: cd minicpp && make
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: minicpp-macos
         path: minicpp/minicpp
@@ -59,15 +59,15 @@ jobs:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
     steps:
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: minicpp-linux
         path: ./linux/
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: minicpp-windows
         path: ./windows/
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: minicpp-macos
         path: ./macos/
