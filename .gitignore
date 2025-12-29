@@ -1,9 +1,16 @@
 # Build artifacts
 *.o
 minicpp/minicpp
+minicpp/minicpp.exe
 minicpp/test_exe
 minicpp/test_result
 minicpp/minicpp_gen.cpp
+minicpp/a.out
+minicpp/compiled_exe
+
+# Release archives
+*.tar.gz
+*.zip
 
 # Generated files
 minicpp/lexer/lexer.cpp
