@@ -1,14 +1,14 @@
 # Build artifacts
 *.o
-minicpp
-test_exe
-test_result
-minicpp_gen.cpp
+minicpp/minicpp
+minicpp/test_exe
+minicpp/test_result
+minicpp/minicpp_gen.cpp
 
 # Generated files
-lexer/lexer.cpp
-parser/parser.cpp
-parser/parser.hpp
+minicpp/lexer/lexer.cpp
+minicpp/parser/parser.cpp
+minicpp/parser/parser.hpp
 
 # OS files
 .DS_Store

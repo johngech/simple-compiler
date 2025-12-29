@@ -1,0 +1,87 @@
+name: Build and Release MiniCPP
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y bison flex g++
+    - name: Build
+      run: cd minicpp && make
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: minicpp-linux
+        path: minicpp/minicpp
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install dependencies
+      run: |
+        choco install winflexbison3
+        choco install mingw
+    - name: Build
+      run: |
+        cd minicpp
+        make
+      shell: msys2 {0}
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: minicpp-windows
+        path: minicpp/minicpp.exe
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install dependencies
+      run: brew install bison flex
+    - name: Build
+      run: cd minicpp && make
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: minicpp-macos
+        path: minicpp/minicpp
+
+  release:
+    needs: [build-linux, build-windows, build-macos]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: minicpp-linux
+        path: ./linux/
+    - uses: actions/download-artifact@v3
+      with:
+        name: minicpp-windows
+        path: ./windows/
+    - uses: actions/download-artifact@v3
+      with:
+        name: minicpp-macos
+        path: ./macos/
+    - name: Create release archives
+      run: |
+        tar -czf minicpp-linux.tar.gz -C linux .
+        zip minicpp-windows.zip windows/*
+        tar -czf minicpp-macos.tar.gz -C macos .
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          minicpp-linux.tar.gz
+          minicpp-windows.zip
+          minicpp-macos.tar.gz
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

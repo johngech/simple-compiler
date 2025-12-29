@@ -5,7 +5,7 @@ A simple compiler for a subset of C++ that generates native executables.
 ## Features
 
 - Parses and compiles basic C++-like programs with variables, arithmetic, assignments.
-- Supports unary minus and post-decrement.
+- Supports unary minus, post-decrement, and exponentiation (^).
 - Generates C++ code and compiles it using the system compiler (g++/clang++).
 
 ## Usage
@@ -25,7 +25,7 @@ A simple compiler for a subset of C++ that generates native executables.
 
 - Declarations: `int x;`
 - Assignments: `x = expr;`
-- Expressions: arithmetic (+, -, *, /), unary minus (-), post-decrement (--)
+- Expressions: arithmetic (+, -, *, /, ^), unary minus (-), post-decrement (--)
 - No functions, classes, loops, conditionals yet.
 
 ## Building
@@ -38,15 +38,27 @@ Requires: bison, flex, g++
 
 ## Installation
 
-### Ubuntu
-Run the install script:
+Download the latest release from [GitHub Releases](https://github.com/yourusername/minicpp/releases).
+
+### Linux
+1. Download `minicpp-linux.tar.gz`
+2. Extract: `tar -xzf minicpp-linux.tar.gz`
+3. Move `minicpp` to `/usr/local/bin/` or add to PATH.
+
+Or use the install script:
 ```bash
 sudo ./install_ubuntu.sh
 ```
-This copies `minicpp` to `/usr/local/bin`.
 
 ### Windows
-Download the Windows binary release, unzip, and add `minicpp.exe` to your PATH. Requires MinGW or MSVC for compilation.
+1. Download `minicpp-windows.zip`
+2. Extract and add `minicpp.exe` to your PATH.
+3. Requires MinGW or MSVC for compilation (when using -c).
+
+### macOS
+1. Download `minicpp-macos.tar.gz`
+2. Extract: `tar -xzf minicpp-macos.tar.gz`
+3. Move `minicpp` to `/usr/local/bin/` or add to PATH.
 
 ## Examples
 
